@@ -5,6 +5,9 @@ import android.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListView;
 
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -19,12 +22,14 @@ import com.google.android.gms.maps.model.LatLng;
 
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.util.ArrayList;
 
 
 public class MainActivity extends AppCompatActivity
 
         implements OnMapReadyCallback {
-
+    ArrayList<ListViewItem> list = new ArrayList<ListViewItem>();
+    ListView listView;
 
     @Override
 
@@ -43,6 +48,17 @@ public class MainActivity extends AppCompatActivity
 
         mapFragment.getMapAsync(this);
 
+        list.add(new ListViewItem("삼겹살집","맛있어요!", R.drawable.samgyup));
+        list.add(new ListViewItem("김치찌개집","더 맛있어요!",R.drawable.kimchi));
+        listView = (ListView) findViewById(R.id.ListView01);
+        CustomAdapter adp = new CustomAdapter(getApplicationContext(), R.layout.list_view, list);
+        listView.setAdapter(adp);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+              //  showDialog(position);
+            }
+        });
     }
 
 
