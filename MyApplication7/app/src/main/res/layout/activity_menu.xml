@@ -56,6 +56,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:textSize="30dp"
+        android:onClick="ClickMe"
         android:textColor="#ff000000"
         android:background="#fff00006"
         android:gravity="center_horizontal"
